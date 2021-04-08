@@ -8,3 +8,4 @@ The following data are necessary to calculate infection rate (beta) as csv file.
 In addition, population information and the number of days need to be added in the source code.
 
 In the current version, Japan data from Jan 19 are uploaded as an example.
+Output example `beta_Data1.csv`
