@@ -1,3 +1,4 @@
+'''© Kensaku Matsunami, Junu Kim, and Kozue Okamura, 2021'''
 '''SEIR model to assess the spread of COVID-19'''
 '''Updated on 2021.01.23'''
 ''' Data
@@ -48,7 +49,7 @@ a = 0.4
 r = 0.0691712976652005
 
 n_total = 1.263 * 1.0e+8
-exp_ini = 0.0 #110.0 / n_total
+exp_ini = (exdata_I_new[0]+exdata_I_new[1])/(2*a)
 inf_ini = exdata_I_now[0] #0.142857143 #/ n_total
 rem_ini = 0.0
 sus_ini = n_total - exp_ini - inf_ini - rem_ini #1.0 #0.959
