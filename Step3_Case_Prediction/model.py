@@ -1,3 +1,4 @@
+'''(C) Kensaku Matsunami, Junu Kim, and Kozue Okamura, 2021'''
 '''SEIR model to assess the spread of COVID-19'''
 '''Updated on 2021.01.23'''
 ''' Data
@@ -39,16 +40,17 @@ def f_rem(t_cou, sus_old, exp_old, inf_old, rem_old, b, a, r):
 a = 0.40 #0.244368099 #0.14463166
 r = 0.0696911140550688 #0.0295524227 #0.14799941
 #t_delay = 8
-n_total = 1.382 * 1.0e+7
+n_total = 1.263 * 1.0e+8
 exdata_I_new = np.loadtxt("I_new.csv") # New infected peoplw
+exdata_I_now = np.loadtxt("I_now.csv")
 exp_ini = (exdata_I_new[0]+exdata_I_new[1])/(2*a) #30730.71429 #37.85714 #0.0 #29735.0/n_total #110.0 / n_total
-inf_ini = 103 #0.142857143 #58923.14286 #24.28571 #63620.0/n_total #/ n_total
+inf_ini = exdata_I_now[0] #0.142857143 #58923.14286 #24.28571 #63620.0/n_total #/ n_total
 rem_ini = 0.0 #225416.2857 #12.85714 #0.0 #232854.143/n_total
 sus_ini = n_total - exp_ini - inf_ini -rem_ini #1.0 #0.959
 exdata_reproduction = np.loadtxt("beta_Data.csv") # unit is %
-n_b = 311 #number of beta
-n_e = 313 #number of env
-n1 = 206 #number of data till Oct 15
+n_b = 359 #number of beta
+n_e = 358 #number of env
+n1 = 238 #number of data till Oct 15
 
 
 for t_delay2 in range(5):
@@ -171,7 +173,7 @@ for t_delay2 in range(5):
     for i_dash in range(n1+t_delay+1):
         newI_dash[i_dash]=NewI.iloc[i_dash,0]
     for i2_dash in range(n_b-n1-1):
-        newI_dash[n1+t_delay+i2_dash+1]=NewI.iloc[n1+t_delay+i2_dash+1,i2_dash+1]
+        newI_dash[n1+t_delay+i2_dash+1]=NewI.iloc[n1+t_delay+i2_dash+1,i2_dash]
 
     b_file = 'NewI_all_' + str(t_delay) + '.csv'
     c_file = 'NewI_dash_' + str(t_delay) + '.csv'    
