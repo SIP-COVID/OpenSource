@@ -1,4 +1,4 @@
-Step 1: Beta Calculation
+# Step 1: Beta Calculation
 
 The following data are necessary to calculate infection rate (beta) as csv file. All data should be moving-averaged.
 - Number of newly infected people
